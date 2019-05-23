@@ -19,11 +19,18 @@ class Palette extends React.Component {
     }
 
     render() {
-        const {colors, paletteName, emoji} = this.props.palette
+        const {colors, paletteName, emoji, id} = this.props.palette
         const {level, format} = this.state
-        const colorBoxes = colors[level].map(color => {
-            return <ColorBox key={color.id} background={color[format]} name={color.name}/>
-        })
+        const colorBoxes = colors[level].map(color => (
+            <ColorBox
+                key={color.id} 
+                background={color[format]} 
+                name={color.name}
+                id={color.id}
+                paletteId={id}
+                showLink={true}
+            />
+        ))
         return (
             <div className="palette">
             <Navbar level={level} changeLevel={this.changeLevel} handleChange={this.changeFormat}/>
