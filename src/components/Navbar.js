@@ -53,7 +53,7 @@ class Navbar extends React.Component {
                     open={this.state.open}
                     autoHideDuration={2000}
                     message={<span id="message-id">Format changed to {format.toUpperCase()}</span>}
-                    contentProps={{'aria-describedby': 'message-id'}}
+                    ContentProps={{'aria-describedby': 'message-id'}}
                     onClose={this.closeSnackBar}
                     action={[<IconButton onClick={this.closeSnackBar} color='inherit' key='close' aria-label='close'>
                                 <CloseIcon />
