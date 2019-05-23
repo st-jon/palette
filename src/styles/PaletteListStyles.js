@@ -28,7 +28,8 @@ export default {
         alignItems: "center",
         color: "white",
         "& a": {
-          color: "white"
+            textDecoration: 'none',
+            color: "white"
         }
     },
     palettes: {
