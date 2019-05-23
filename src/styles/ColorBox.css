@@ -30,6 +30,14 @@
     font-size: 12px;
 }
 
+.light-text {
+    color: white;
+}
+
+.colorBox .dark-text {
+    color: rgba(0,0,0, .5);
+}
+
 .copy-btn,
 .back-btn {
     width: 100px;
@@ -70,6 +78,7 @@
     color: white;
     width: 60px;
     height: 30px;
+    font-size: 12px;
     text-align: center;
     font-family: Roboto;
     line-height: 30px;
