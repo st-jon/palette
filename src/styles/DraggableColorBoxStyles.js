@@ -1,7 +1,7 @@
 import sizes from './sizes'
 import chroma from 'chroma-js'
 
-export default {
+const styles = {
     root: {
         width: "20%",
         height: "25%",
@@ -30,23 +30,21 @@ export default {
     boxContent: {
         position: "absolute",
         padding: "10px", 
-        height: "40px",           
         width: "100%",
         left: "0px",
         bottom: "0px",
         color: props =>
-          chroma(props.color).luminance() <= 0.08
-            ? "rgba(255,255,255,0.8)"
-            : "rgba(0,0,0,0.6)",
+          chroma(props.color).luminance() <= 0.08 ? "rgba(255,255,255,0.8)" : "rgba(0,0,0,0.6)",
         fontFamily: "Roboto",
         letterSpacing: "1px",
         textTransform: "uppercase",
         fontSize: "12px",
         display: "flex",
         justifyContent: "space-between",
-        alignItems: "center",
     },
     deleteIcon: {
         transition: ".3s ease"
     }
 }
+
+export default styles
