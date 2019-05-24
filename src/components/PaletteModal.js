@@ -49,12 +49,12 @@ class PaletteModal extends Component {
     }
     
     render() {
-        const { newPaletteName } = this.state
+        const { newPaletteName, stage } = this.state
         const { hideModal } = this.props
         return (
             <div className="">
                 <Dialog 
-                    open={this.state.stage === 'emoji'}
+                    open={stage === 'emoji'}
                     onClose={hideModal}
                 >
                     <DialogTitle id='form-dialog-title'>Choose an Emoji</DialogTitle>
@@ -64,7 +64,7 @@ class PaletteModal extends Component {
                     />
                 </Dialog>
                 <Dialog
-                    open={this.state.stage === 'form'}
+                    open={stage === 'form'}
                     onClose={hideModal}
                     aria-labelledby='form-dialog-title'
                 >

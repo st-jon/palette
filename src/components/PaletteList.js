@@ -42,6 +42,7 @@ class PaletteList extends React.Component {
 
     render() {
         const {palettes, classes} = this.props
+        const {openDelete} = this.state
         return (
             <div className={classes.root}>
                 <div className={classes.container}>
@@ -69,7 +70,7 @@ class PaletteList extends React.Component {
                         ))}
                     </TransitionGroup>    
                 </div>
-                <Dialog open={this.state.openDelete} aria-labelledby="delete-dialog-title" onClose={this.closeDialog}>
+                <Dialog open={openDelete} aria-labelledby="delete-dialog-title" onClose={this.closeDialog}>
                     <DialogTitle id="delete-dialog-title">Delete this Palette ?</DialogTitle>
                     <List>
                         <ListItem button onClick={this.handleDelete}>

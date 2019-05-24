@@ -27,7 +27,7 @@ class Navbar extends React.Component {
 
     render() {
         const {level, changeLevel, showSlider, classes} = this.props
-        const {format} = this.state
+        const {format, open} = this.state
         return (
             <div className={classes.navbar}>
                 <div className={classes.logo}>
@@ -54,7 +54,7 @@ class Navbar extends React.Component {
                 </div>
                 <Snackbar 
                     anchorOrigin={{vertical:'top', horizontal:'center'}} 
-                    open={this.state.open}
+                    open={open}
                     autoHideDuration={2000}
                     message={<span id="message-id">Format changed to {format.toUpperCase()}</span>}
                     ContentProps={{'aria-describedby': 'message-id'}}
