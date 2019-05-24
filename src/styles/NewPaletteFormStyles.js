@@ -31,10 +31,13 @@ export default theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    display: 'flex',
+    alignItems: 'center'
   },
   drawerHeader: {
     display: 'flex',
-    alignItems: 'center',
+    width: "100%",
+    alignItems: 'flex-end',
     padding: '0 8px',
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
@@ -56,4 +59,20 @@ export default theme => ({
     }),
     marginLeft: 0,
   },
-});
+  drawerContainer: {
+    width: "90%",
+    height: '100%',
+    display: 'flex',
+    flexDirection: "column",
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  btn: {
+    display:"flex",
+   
+    "& button" : {
+      fontSize: "13px",
+      marginTop: "3rem",
+    }
+  },
+})

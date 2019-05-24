@@ -3,26 +3,23 @@ import {Link} from 'react-router-dom'
 
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Button from '@material-ui/core/Button';
-import DraggableColorList from './DraggableColorList'
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import {arrayMove} from 'react-sortable-hoc'
-import {ChromePicker} from 'react-color'
+import { ValidatorForm } from "react-material-ui-form-validator";
 
-import styles from '../styles/NewPaletteFormStyles'
+import PaletteModal from './PaletteModal'
+
+import styles from '../styles/PaletteFormNavStyles'
 
 class PaletteFormNav extends Component {
     state = {
         newPaletteName: "",
+        showModal: false
     }
 
     componentDidMount() {
@@ -37,65 +34,63 @@ class PaletteFormNav extends Component {
         })
     }
 
+    showModal = () => {
+        this.setState({showModal: true})
+    }
+
+    hideModal = () => {
+        this.setState({showModal: false})
+    }
+
     render() {
-        const { classes, open } = this.props
-        const {newPaletteName} = this.state
+        const { classes, open, palettes, handleSubmit } = this.props
         return (
-            <div>
-            <CssBaseline />
-            <AppBar
-                position='fixed'
-                color='default'
-                className={classNames(classes.appBar, {
-                [classes.appBarShift]: open
-                })}
-            >
-                <Toolbar disableGutters={!open}>
-                    <IconButton
-                        color='inherit'
-                        aria-label='Open drawer'
-                        onClick={this.props.handleDrawerOpen}
-                        className={classNames(classes.menuButton, open && classes.hide)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant='h6' color='inherit' noWrap>
-                        Create A Palette
-                    </Typography>
-                    <ValidatorForm onSubmit={() => this.props.handleSubmit(newPaletteName)}>
-                        <TextValidator 
-                            label="Palette Name" 
-                            name="newPaletteName"
-                            value={newPaletteName}
-                            onChange={this.handleChange}
-                            validators={["required", "isPaletteNameUnique"]}
-                            errorMessages={[
-                                "Enter a Palette name",
-                                "Name already used"
-                                ]}
-                        />
-                        <Link to='/'>
-                            <Button 
-                                variant="contained" 
-                                color="secondary"
-                                type="submit"
-                            >
-                            Go Back
-                            </Button>
-                        </Link>
-                        <Button 
-                            variant="contained" 
-                            color="primary"
-                            type="submit"
+            <div className={classes.root}>
+                <CssBaseline />
+                <AppBar
+                    position='fixed'
+                    color='default'
+                    className={classNames(classes.appBar, {
+                    [classes.appBarShift]: open
+                    })}
+                >
+                    <Toolbar disableGutters={!open}>
+                        <IconButton
+                            color='inherit'
+                            aria-label='Open drawer'
+                            onClick={this.props.handleDrawerOpen}
+                            className={classNames(classes.menuButton, open && classes.hide)}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography variant='h6' color='inherit' noWrap>
+                            Create A Palette
+                        </Typography>   
+                    </Toolbar>
+                    <div className={classes.navBtn}>
+                        <Button
+                            className={classes.button}
+                            variant='contained'
+                            color='primary'
+                            onClick={this.showModal}
                         >
                         Save Palette
                         </Button>
-                    </ValidatorForm>
-                </Toolbar>
-            </AppBar>
+                        <Link className={classes.link} to='/'>
+                            <Button 
+                                className={classes.button}
+                                variant='contained' 
+                                color='secondary'
+                            >
+                            Go Back
+                            </Button>
+                      </Link>
+                      {this.state.showModal && <PaletteModal palettes={palettes} handleSubmit={handleSubmit} hideModal={this.hideModal} />}
+                    </div>
+                </AppBar>
             </div>
         )
     }
 }
 
-export default withStyles(styles)(PaletteFormNav)
+export default withStyles(styles, { withTheme: true })(PaletteFormNav)
