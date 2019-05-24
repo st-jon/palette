@@ -1,4 +1,4 @@
-export default theme => ({
+export default {
     picker: {
         marginTop: "2rem",
         marginBottom: "2rem"
@@ -13,4 +13,4 @@ export default theme => ({
         width: "100%",
         height: "70px"
       }
-})
+}

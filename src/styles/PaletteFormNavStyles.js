@@ -1,4 +1,7 @@
-const drawerWidth = 300;
+import {DRAWER_WIDTH} from '../constants'
+import sizes from './sizes'
+
+const drawerWidth = DRAWER_WIDTH;
 
 export default theme => ({
   root: {
@@ -13,6 +16,9 @@ export default theme => ({
     justifyContent: 'space-between',
     alignItems: "center",
     height:"64px"
+  },
+  hide: {
+    display: 'none',
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -29,8 +35,15 @@ export default theme => ({
   navBtn: {
     marginRight: "1rem",
   },
+    [sizes.down("xs")]: {
+      marginRight: "0.5rem"
+    },
   button: {
     margin: "0 .5rem",
+    [sizes.down("xs")]: {
+      margin: "0 .2rem",
+      padding: ".3rem"
+    }
   },
   link: {
     textDecoration: "none"

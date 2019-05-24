@@ -1,4 +1,5 @@
-const drawerWidth = 300;
+import {DRAWER_WIDTH} from '../constants'
+const drawerWidth = DRAWER_WIDTH;
 
 export default theme => ({
   root: {
@@ -22,9 +23,6 @@ export default theme => ({
     marginLeft: 12,
     marginRight: 20,
   },
-  hide: {
-    display: 'none',
-  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -45,12 +43,13 @@ export default theme => ({
   content: {
     flexGrow: 1,
     height: "calc(100vh - 64px)",
-    padding: theme.spacing.unit * 3,
+    // padding: theme.spacing.unit * 3,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: -drawerWidth,
+    padding: "0"
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
