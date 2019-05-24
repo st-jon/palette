@@ -1,13 +1,21 @@
 import sizes from './sizes'
 
 export default {
+    "@global": {
+        ".fade-exit": {
+            opacity: 1
+        },
+        ".fade-exit-active": {
+            opacity: 0,
+            transition: "opacity .5s ease-out"
+        }
+    },
     root: {
         height: "100vh",
         display: "flex",
         alignItems: "flex-start",
         justifyContent: "center",
-        backgroundColor: "#394bad",
-        // backgroundImage: `url(${bg})`,
+        backgroundColor: "blue",
         overflow: "scroll"
       },
     container: {
