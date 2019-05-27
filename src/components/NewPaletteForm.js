@@ -40,13 +40,10 @@ class NewPaletteForm extends Component {
     }
 
     handleChange = (evt) => {
-        this.setState({
-            [evt.target.name]: evt.target.value
-        })
+        this.setState({[evt.target.name]: evt.target.value})
     }
 
     handleSubmit = (newPalette) => {
-        console.log(newPalette)
         newPalette.id = newPalette.paletteName.toLowerCase().replace(/ /g, "-")
         newPalette.colors = this.state.colors
         this.props.savePalette(newPalette)
@@ -54,20 +51,14 @@ class NewPaletteForm extends Component {
     }
 
     deleteBox = (colorName) => {
-        this.setState({
-            colors: this.state.colors.filter(color => color.name !== colorName)
-        })
+        this.setState({colors: this.state.colors.filter(color => color.name !== colorName)})
     }
 
     onSortEnd = ({oldIndex, newIndex}) => {
-        this.setState(({colors}) => ({
-          colors: arrayMove(colors, oldIndex, newIndex),
-        }))
+        this.setState(({colors}) => ({colors: arrayMove(colors, oldIndex, newIndex)}))
     }
 
-    clearColors = () => {
-        this.setState({colors: []})
-    }
+    clearColors = () => this.setState({colors: []})
 
     randomColors = () => {
         const allColors = this.props.palettes.map(p => p.colors).flat()
